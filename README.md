@@ -18,6 +18,11 @@ that you may find interesting and would want to focus on.
 Run the scanner against a domain:
 ```bash
 python subdomain_scanner.py example.com 
+[+] Found: www.example.com -> 93.184.216.34
+     Title: Example Domain
+
+[+] Found: mail.example.com -> 93.184.216.34
+     No title tag found
 ```
 # Installation
 Clone the repo and install dependencies:
