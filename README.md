@@ -13,10 +13,16 @@ that you may find interesting and would want to focus on.
 ## Requirements
 - Python 3.x
 - requests
-  
-## Installation
+
+## Usage
+Run the scanner against a domain:
+```bash
+python subdomain_scanner.py example.com 
+```
+# Installation
 Clone the repo and install dependencies:
 ```bash
 git clone https://github.com/mckipfc/cybernautic-code.git
 cd cybernautic-code
 pip install -r requirements.txt
+
