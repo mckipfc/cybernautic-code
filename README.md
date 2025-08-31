@@ -1,6 +1,6 @@
 # Subdomain Scanner
 
-A Python tool that scans for common subdomains and checks if they are reachable
+A Python tool that scans for common subdomains and checks if they are reachable.
 If the website subdomain is reachable we then check if the subdomain has any titles
 that you may find interesting and would want to focus on.
 
