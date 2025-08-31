@@ -27,7 +27,6 @@ python subdomain_scanner.py example.com
 # Installation
 Clone the repo and install dependencies:
 ```bash
-git clone https://github.com/mckipfc/cybernautic-code.git
-cd cybernautic-code
+git clone https://github.com/mckipfc/Subdomain_Scanner.git
+cd Subdomain_Scanner
 pip install -r requirements.txt
-
