@@ -9,7 +9,11 @@ that you may find interesting and would want to focus on.
 - Resolves IP addresses
 - Checks HTTP/HTTPS accessibility
 - Extracts webpage <title> if found
-
+  
+## Requirements
+- Python 3.x
+- requests
+  
 ## Installation
 Clone the repo and install dependencies:
 ```bash
