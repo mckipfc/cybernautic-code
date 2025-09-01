@@ -1,7 +1,7 @@
 import socket
 import requests
 
-# We need a list of subdomains to check for potential inlets
+# List of subdomains to check for potential inlets
 SUBDOMAINS = ['www', 'mail', 'ftp', 'api', 'dev', 'test']
 
 def extract_title(html):
@@ -9,42 +9,39 @@ def extract_title(html):
     if start == -1:
         return None
 
-    ## start + 7 means it won't include "<title>" in the output
+    # Exclude "<title>" in the output
     titlestart = start + 7
 
+    # Look for end title
     end = html.lower().find("</title>", titlestart)
     if end == -1:
         return None
 
+    #
     title = html[titlestart:end]
     cleaned = " ".join(title.split())
     return cleaned
 
 def get_http_info(subdomain):
     try:
-        # Here we are seeing if it is reachable through http
+        # Try https first
         res = requests.get(f"https://{subdomain}", timeout=3)
-        title = extract_title(res.text)
-        if title:
-            print(f"    Title: {title}")
-        else:
-            print("    No title tag found")
-    except requests.exceptions.SSLError:
-        try:
-            # Here, it'll run if there's an ssl error (https doesn't work)
-            res = requests.get(f"http://{subdomain}", timeout=3)
-            title = extract_title(res.text)
-            if title:
-                print(f"    Title: {title}")
-            else:
-                print("    No title tag found")
-        except requests.exceptions:
-            print("    No web response")
     except requests.exceptions.RequestException:
-        print("    No web response")
+        try:
+            # If no https due to network error from https, check http
+            res = requests.get(f"http://{subdomain}", timeout=3)
+        except requests.exceptions.RequestException as e:
+                print ("   No web response:", e)
+                return
+    # If title is found in either http or https, print it
+    title = extract_title(res.text)
+    if title:
+        print(f"    Title: {title}")
+    else:
+        print("    No title tag found")
 
 
-# Adds [SUBDOMAINS]+[userinput]+[.com] and if it finds something, it'll = IP address
+# Puts together subdomains to find IP address
 def check_subdomains(domain):
     for sub in SUBDOMAINS:
         url = f"{sub}.{domain}"
