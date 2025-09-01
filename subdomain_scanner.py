@@ -23,14 +23,26 @@ def extract_title(html):
 def get_http_info(subdomain):
     try:
         # Here we are seeing if it is reachable through http
-        res = requests.get(f"http://{subdomain}", timeout=3)
+        res = requests.get(f"https://{subdomain}", timeout=3)
         title = extract_title(res.text)
         if title:
             print(f"    Title: {title}")
         else:
             print("    No title tag found")
+    except requests.exceptions.SSLError:
+        try:
+            # Here, it'll run if there's an ssl error (https doesn't work)
+            res = requests.get(f"http://{subdomain}", timeout=3)
+            title = extract_title(res.text)
+            if title:
+                print(f"    Title: {title}")
+            else:
+                print("    No title tag found")
+        except requests.exceptions:
+            print("    No web response")
     except requests.exceptions.RequestException:
         print("    No web response")
+
 
 # Adds [SUBDOMAINS]+[userinput]+[.com] and if it finds something, it'll = IP address
 def check_subdomains(domain):
