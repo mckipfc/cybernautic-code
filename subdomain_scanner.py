@@ -29,8 +29,6 @@ def get_http_info(subdomain):
             print(f"    Title: {title}")
         else:
             print("    No title tag found")
-            except requests.exceptions.RequestException:
-            print("    No web response")
     except requests.exceptions.RequestException:
         print("    No web response")
 
