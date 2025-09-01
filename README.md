@@ -1,7 +1,7 @@
 # Subdomain Scanner
 
 A Python tool that scans for common subdomains and checks if they are reachable.
-If the website subdomain is reachable we then check if the subdomain has any titles
+If the website subdomain is reachable it checks if the subdomain has any titles
 that you may find interesting and would want to focus on.
 
 # Features
@@ -12,7 +12,10 @@ that you may find interesting and would want to focus on.
   
 ## Requirements
 - Python 3.x
-- requests
+- requests library
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 Run the scanner against a domain:
