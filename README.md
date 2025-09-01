@@ -4,7 +4,7 @@ A Python tool that scans for common subdomains and checks if they are reachable.
 If the website subdomain is reachable it checks if the subdomain has any titles
 that you may find interesting and would want to focus on.
 
-# Features
+## Features
 - Resolves common subdomains (www, mail, ftp, api, etc.)
 - Resolves IP addresses
 - Checks HTTP/HTTPS accessibility
@@ -27,9 +27,18 @@ python subdomain_scanner.py example.com
 [+] Found: mail.example.com -> 93.184.216.34
      No title tag found
 ```
-# Installation
+## Installation
 Clone the repo and install dependencies:
 ```bash
 git clone https://github.com/mckipfc/Subdomain_Scanner.git
 cd Subdomain_Scanner
 pip install -r requirements.txt
+```
+## Notes
+
+This tool was built as a learning project to practice:
+
+- DNS resolution with Python’s socket
+- Making HTTP/HTTPS requests with requests
+- String parsing and error handling
+- Structuring small Python tools
